@@ -8,18 +8,6 @@
 
 **SILMA TTS v1** is a high-performance, **150M-parameter** bilingual (Arabic/English) TTS model developed by [SILMA AI](https://silma.ai). Built on the cutting-edge **F5-TTS diffusion architecture**, the model was **pretrained from scratch** using tens of thousands of hours of high-quality public and proprietary data. To give back to the community, SILMA TTS is released under a highly permissive license, making state-of-the-art speech synthesis accessible for both **research and commercial use**.
 
-
-## Features
-
-1. High-Fidelity Audio: Superior speech synthesis with high-quality output
-2. Lightweight 150M Parameter Model: works well in low-resource environments
-3. Instant Voice Cloning
-4. Sub-Second Latency: Optimized for real-time applications with lightning-fast generation speeds
-5. Bilingual Arabic & English Support: Native-level fluency across both languages
-6. Advanced Arabic Diacritization: Full support for Tashkeel to ensure precise pronunciation and context
-7. Text Normalization: utilizing NeMo Text Processing
-8. Commercial-Friendly Licensing: Fully open-source under the Apache 2.0 License
-
 ## Installation
 
 ### Using pip 
@@ -113,28 +101,7 @@ python src/silma_tts/infer/example.py
 
 ## Training
 
-Our model is 100% compatible with [F5-TTS v1.1.7](https://github.com/SWivid/F5-TTS/releases/tag/1.1.7). This means you can make use of all the great resources, tools and community experince in the F5-TTS project.
-
-### Steps
-
-```bash
-
-## clone F5-TTS v1.1.7
-git clone --depth 1  --branch v1.1.7 https://github.com/SWivid/F5-TTS.git
-cd F5-TTS
-pip install -e .
-
-## download silma-tts model weights, vocab.txt and config.yaml
-hf download silma-ai/silma-tts . --local-dir /root/silma-tts
-
-## open F5-TTS UI training pipeline 
-f5-tts_infer-gradio --port 7860 --host 0.0.0.0
-
-## follow the F5-TTS training guide below
-## https://github.com/SWivid/F5-TTS/tree/main/src/f5_tts/train
-
-```
-Summary: you need to use the F5-TTS v1.1.7 training code, but use our config file, vocab, and our pretrained weights
+Our model is 100% compatible with [F5-TTS v1.1.7](https://github.com/SWivid/F5-TTS/releases/tag/1.1.7). This means you can make use of all the great resources and community experince in F5-TTS project
 
 
 ## Acknowledgements
@@ -156,7 +123,7 @@ Unfortunately we don't have capacity to actively support this repo. We also beli
 
 ```
 @article{silma-tts-v1,
-      title={SILMA TTS: A Lightweight Open Bilingual Text to Speech Model}, 
+      title={SILMA TTS: A Lightweight Open Bilingual Text to Speech Model }, 
       author={SILMA AI},
       year={2026},
 }
@@ -164,3 +131,5 @@ Unfortunately we don't have capacity to actively support this repo. We also beli
 ## License
 1. Code: MIT License
 2. Model Weights: Apache-2.0 License
+
+
