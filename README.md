@@ -126,21 +126,32 @@ Our model is 100% compatible with [F5-TTS v1.1.7](https://github.com/SWivid/F5-T
 ```bash
 
 ## clone F5-TTS v1.1.7
-git clone --depth 1  --branch v1.1.7 https://github.com/SWivid/F5-TTS.git
+cd /root
+git clone --depth 1  --branch 1.1.7 https://github.com/SWivid/F5-TTS.git
 cd F5-TTS
 pip install -e .
 
 ## download silma-tts model weights, vocab.txt and config.yaml
-hf download silma-ai/silma-tts . --local-dir /root/silma-tts
+hf download silma-ai/silma-tts  --local-dir /root/silma-tts-v1-weights
+
+## create the project, then replace the default configuration, vocabulary, and fine-tuning Python file. Note that the patched finetune_cli.py overrides the F5TTS_v1_Base config with the silma-tts model config.
+mkdir /root/F5-TTS/data/finetuning_project_char
+cp /root/silma-tts-v1-weights/vocab.txt /root/F5-TTS/data/finetuning_project_char
+cp /root/silma-tts-v1-weights/finetune_cli.py /root/F5-TTS/src/f5_tts/train/finetune_cli.py
+echo /root/silma-tts-v1-weights/config.yaml > /root/F5-TTS/src/f5_tts/configs/F5TTS_v1_Base.yaml
+
+
 
 ## open F5-TTS UI training pipeline 
-f5-tts_infer-gradio --port 7860 --host 0.0.0.0
+f5-tts_finetune-gradio --port 7860 --host 0.0.0.0
 
-## follow the F5-TTS training guide below
+## After preparing your data, go to "Train Model" tab -> "Path to the Pretrained Checkpoint" add enter the path to the silma-tts model weights file: /root/silma-tts-v1-weights/model.pt while leaving "Tokenizer File" empty
+
+## For more information please follow the F5-TTS training guide below
 ## https://github.com/SWivid/F5-TTS/tree/main/src/f5_tts/train
 
 ```
-Summary: you need to use the F5-TTS v1.1.7 training code, but use our config file, vocab, and our pretrained weights
+Summary: you need to use the F5-TTS v1.1.7 training code, but use our config file, vocab, patched training script and our pretrained weights
 
 
 ## Acknowledgements
