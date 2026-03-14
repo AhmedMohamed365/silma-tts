@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "silma_tts"
-version = "1.0.3"
+version = "1.0.4"
 description = "SILMA TTS: A Lightweight Open Bilingual Text to Speech Model"
 readme = "README.md"
 license = {text = "MIT License"}
@@ -54,4 +54,4 @@ Homepage = "https://github.com/SILMA-AI/silma-tts"
 "silma-tts-app" = "silma_tts.app:main"
 
 [tool.setuptools.package-data]
-"silma_tts" = ["*.yaml","*.wav"]
+"silma_tts" = ["*.yaml","**/*.wav"]

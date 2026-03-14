@@ -14,7 +14,7 @@
 1. High-Fidelity Audio: Superior speech synthesis with high-quality output
 2. Lightweight 150M Parameter Model: works well in low-resource environments
 3. Instant Voice Cloning
-4. Ultra-Low Latency: Optimized for real-time applications with RTF around 0.19 (A40 GPU)
+4. Ultra-Low Latency: Optimized for real-time applications with RTF around 0.12 (RTX 4090 GPU)
 5. Bilingual Arabic & English Support: Native-level fluency across both languages
 6. Advanced Arabic Diacritization: Full support for Tashkeel to ensure precise pronunciation and context
 7. Text Normalization: utilizing NeMo Text Processing
@@ -34,7 +34,7 @@ python -m venv silma-tts-env
 source silma-tts-env/bin/activate
 
 # install silma-tts library
-pip install silma_tts
+pip install silma-tts
 
 ```
 
