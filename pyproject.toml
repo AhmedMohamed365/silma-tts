@@ -3,8 +3,8 @@ requires = ["setuptools >= 61.0", "setuptools-scm>=8.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "silma-tts"
-version = "1.0.1"
+name = "silma_tts"
+version = "1.0.3"
 description = "SILMA TTS: A Lightweight Open Bilingual Text to Speech Model"
 readme = "README.md"
 license = {text = "MIT License"}
@@ -18,11 +18,8 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "accelerate>=0.33.0",
-    "bitsandbytes>0.37.0; platform_machine != 'arm64' and platform_system != 'Darwin'",
     "cached_path",
     "click",
-    "datasets",
     "ema_pytorch>=0.5.2",
     "gradio>=5.35.0",
     "hydra-core>=1.3.0",
@@ -55,3 +52,6 @@ Homepage = "https://github.com/SILMA-AI/silma-tts"
 
 [project.scripts]
 "silma-tts-app" = "silma_tts.app:main"
+
+[tool.setuptools.package-data]
+"silma_tts" = ["*.yaml","*.wav"]

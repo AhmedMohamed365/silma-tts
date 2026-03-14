@@ -14,7 +14,7 @@
 1. High-Fidelity Audio: Superior speech synthesis with high-quality output
 2. Lightweight 150M Parameter Model: works well in low-resource environments
 3. Instant Voice Cloning
-4. Sub-Second Latency: Optimized for real-time applications with lightning-fast generation speeds
+4. Ultra-Low Latency: Optimized for real-time applications with RTF around 0.19 (A40 GPU)
 5. Bilingual Arabic & English Support: Native-level fluency across both languages
 6. Advanced Arabic Diacritization: Full support for Tashkeel to ensure precise pronunciation and context
 7. Text Normalization: utilizing NeMo Text Processing
@@ -34,7 +34,7 @@ python -m venv silma-tts-env
 source silma-tts-env/bin/activate
 
 # install silma-tts library
-pip install silma-tts
+pip install silma_tts
 
 ```
 
@@ -76,33 +76,39 @@ http://127.0.0.1:7860/
 
 ```python
 
+import time
 from silma_tts.api import SilmaTTS
 
 silma_tts = SilmaTTS()
 
 ## the voice/style you want to clone
-reference_audio_file = "src/infer/ref_audio_samples/ar.ref.24k.wav"
+reference_audio_file = "/root/silma-tts/src/silma_tts/infer/ref_audio_samples/ar.ref.24k.wav"
 ## the transcription of the reference_audio_file
 reference_audio_text = "ويدقق النظر في القرآن الكريم وسائر الكتب السماوية ويتبع مسالك الرسل العظام عليهم الصلاة والسلام."
 
+time_start = time.time()
 
 wav, sr, spec = silma_tts.infer(
     ref_file=reference_audio_file,
     ref_text=reference_audio_text, # can also be left None - will be transcribed on the fly
     gen_text="""
-    أنا نموذج جديد من سلمى لتحويل النص إلى كلام؛ يمكنني التحدث باللغة العربية مع أو بدون علامات التشكيل.
+    أنا نموذج جديد من سلمى لتحويل النص إلى كلام، يمكنني التحدث باللغة العربية مع أو بدون علامات التشكيل.
     I am the new SILMA model for converting text to speech, I can speak Arabic with or without diacritics.
     """.strip(),
     file_wave=str("generated_audio.wav"),
     seed=None,
+    speed=1
 )
+
+time_end = time.time()
+print(f"Time elapsed:{(time_end-time_start):.2f} seconds")
 
 ## Note 1: generated audio file (generated_audio.wav) will be saved in the current directory
 ## Note 2: You can also use the "wav" variable (raw waveform) to play the audio to return it via API
 
 ```
 
-You can run the example above directly using the following command:
+You can also run the example above directly using the following command, but only if you installed from source:
 
 ```bash
 
