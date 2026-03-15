@@ -158,6 +158,11 @@ Summary: you need to use the F5-TTS v1.1.7 training code, but use our config fil
 
 This repo builds directly upon the excellent foundation laid by the [F5-TTS](https://github.com/SWivid/F5-TTS) project. The core architecture and the majority of the code is derived from their work. Our work introduces new pretrained weights and significant optimizations to the inference code.
 
+**Other projects**
+1. We use [CATT](https://github.com/abjadai/catt) to enrich arabic text with Tashkeel in case text doesn't include tashkeel.
+2. We use [NeMo-text-processing](https://github.com/NVIDIA/NeMo-text-processing) to handle text normalization.
+
+
 
 ## Support
 
