@@ -173,9 +173,10 @@ Unfortunately we don't have the capacity to actively support this repo. We also 
 
 ```
 @article{silma-tts-v1,
-      title={SILMA TTS: A Lightweight Open Bilingual Text to Speech Model}, 
-      author={SILMA AI},
-      year={2026},
+  title   = {SILMA TTS: A Lightweight Open Bilingual Text to Speech Model},
+  author  = {SILMA AI},
+  year    = {2026},
+  url     = {https://github.com/SILMA-AI/silma-tts}
 }
 ```
 ## License
