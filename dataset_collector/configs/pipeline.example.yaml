@@ -1,0 +1,23 @@
+output_root: data
+
+channels:
+  - channel_url: "https://www.youtube.com/@example_channel/videos"
+    channel_slug: "example_channel"
+    max_videos: 50
+
+chunking:
+  min_chunk_sec: 2
+  max_chunk_sec: 20
+  chunks_per_file: 100
+  enable_audio_filter: true
+  audio_filter_model: "MIT/ast-finetuned-audioset-10-10-0.4593"
+  speech_threshold: 0.45
+
+asr:
+  model_id: "facebook/omniASR-LLM-7B"
+  language: "ar"
+  split: "train"
+
+merge:
+  input_manifest_name: "manifest_transcribed.jsonl"
+  output_manifest: "data/merged/dataset_manifest.jsonl"
